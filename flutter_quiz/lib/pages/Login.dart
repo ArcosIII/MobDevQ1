@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:navigation/pages/HomeScreen.dart';
+import 'package:navigation/pages/Dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
   static String routeName = "/login";
@@ -28,6 +28,7 @@ class _LoginScreenState extends State<LoginScreen> {
             keyboardType: TextInputType.name,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
+              border: InputBorder.none,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
                   borderSide: BorderSide(color: Colors.black, width: 1.0)),
@@ -65,6 +66,7 @@ class _LoginScreenState extends State<LoginScreen> {
             keyboardType: TextInputType.name,
             style: TextStyle(color: Colors.black),
             decoration: InputDecoration(
+              border: InputBorder.none,
               enabledBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(15.0),
                   borderSide: BorderSide(color: Colors.black, width: 1.0)),
@@ -141,6 +143,6 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void login(BuildContext context) {
-    Navigator.pushNamed(context, HomeScreen.routeName);
+    Navigator.pushNamed(context, Dashboard.routeName);
   }
 }
