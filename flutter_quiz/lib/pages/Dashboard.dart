@@ -36,8 +36,8 @@ class _DashboardState extends State<Dashboard> {
                     onPressed: () {
                       goToPage(context, Profile.routeName);
                     },
-                    label: Text("Dashboard"),
-                    icon: Icon(Icons.login),
+                    label: Text("Profile"),
+                    icon: Icon(Icons.account_circle),
                     style: ElevatedButton.styleFrom(fixedSize: Size(150, 50)),
                   ),
                   SizedBox(
@@ -48,7 +48,7 @@ class _DashboardState extends State<Dashboard> {
                       goToPage(context, Settings.routeName);
                     },
                     label: Text("Settings"),
-                    icon: Icon(Icons.login),
+                    icon: Icon(Icons.settings),
                     style: ElevatedButton.styleFrom(fixedSize: Size(150, 50)),
                   ),
                 ],
