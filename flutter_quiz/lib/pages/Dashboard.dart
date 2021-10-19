@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:navigation/pages/Profile.dart';
 import 'package:navigation/pages/Settings.dart';
+import 'dart:math';
 
 class Dashboard extends StatefulWidget {
   static String routeName = "/dashboard";
@@ -10,6 +11,13 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  int dice_no = 1;
+  void update() {
+    setState(() {
+      dice_no = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,48 +25,48 @@ class _DashboardState extends State<Dashboard> {
         title: Text("Home Screen"),
         centerTitle: true,
         automaticallyImplyLeading: false,
+        actions: [
+          IconButton(
+            icon: Icon(
+              Icons.account_circle,
+              
+              color:Colors.white
+            ),
+            onPressed: () {
+              goToPage(context, Profile.routeName);
+            },
+          ),
+          Text("Profile"),
+          IconButton(
+            icon: Icon(
+              Icons.settings,
+              
+              color:Colors.white
+            ),
+            onPressed: () {
+              goToPage(context, Settings.routeName);
+            },
+          ),
+          Text("Settings"),
+        ]
       ),
       body: Center(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Text(
-                "Home Screen",
-                style: TextStyle(fontSize: 20.0),
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      goToPage(context, Profile.routeName);
-                    },
-                    label: Text("Profile"),
-                    icon: Icon(Icons.account_circle),
-                    style: ElevatedButton.styleFrom(fixedSize: Size(150, 50)),
-                  ),
-                  SizedBox(
-                    width: 20.0,
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {
-                      goToPage(context, Settings.routeName);
-                    },
-                    label: Text("Settings"),
-                    icon: Icon(Icons.settings),
-                    style: ElevatedButton.styleFrom(fixedSize: Size(150, 50)),
-                  ),
-                ],
-              )
-            ],
+      child: Expanded(
+        child: Padding(
+          padding: const EdgeInsets.all(50.0),
+          child: TextButton(
+            child: Image.asset('images/dice$dice_no.png'),
+            onPressed: () {
+              update();
+            },
           ),
         ),
       ),
+    )
     );
   }
+
+  
 
   void goToPage(BuildContext context, String route) {
     Navigator.pushNamed(context, route);
